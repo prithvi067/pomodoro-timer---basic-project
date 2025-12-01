@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>Pomodoro Timer</h1>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle dark mode"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+      </header>
+
+      <!-- Main Timer Section -->
+      <main class="main">
+        <!-- Timer Display with SVG Ring -->
+        <div class="timer-section">
+          <div class="timer-container">
+            <svg
+              class="progress-ring-svg"
+              width="280"
+              height="280"
+              viewBox="0 0 280 280"
+            >
+              <!-- Background circle -->
+              <circle cx="140" cy="140" r="130" class="progress-ring-bg" />
+              <!-- Animated progress ring -->
+              <circle
+                cx="140"
+                cy="140"
+                r="130"
+                class="progress-ring"
+                id="progressRing"
+              />
+            </svg>
+            <div class="timer-display">
+              <div class="timer-time" id="timerDisplay">25:00</div>
+              <div class="timer-label" id="timerLabel">Focus Time</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div class="settings-section">
+          <div class="setting-group">
+            <label for="focusInput">Focus Duration (min)</label>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                id="focusInput"
+                min="1"
+                max="60"
+                value="25"
+              />
+              <span class="input-unit">min</span>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <label for="breakInput">Break Duration (min)</label>
+            <div class="input-wrapper">
+              <input type="number" id="breakInput" min="1" max="30" value="5" />
+              <span class="input-unit">min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="controls-section">
+          <button class="btn btn-primary" id="startBtn">Start</button>
+          <button class="btn btn-secondary" id="pauseBtn" disabled>
+            Pause
+          </button>
+          <button class="btn btn-tertiary" id="resetBtn">Reset</button>
+        </div>
+
+        <!-- Session Info -->
+        <div class="session-info">
+          <div class="session-stat">
+            <span class="stat-label">Sessions</span>
+            <span class="stat-value" id="sessionCount">0</span>
+          </div>
+          <div class="session-stat">
+            <span class="stat-label">Total Time</span>
+            <span class="stat-value" id="totalTime">0h</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Notification and Sound Alert -->
+    <audio id="notificationSound" preload="auto">
+      <!-- Using a simple beep tone via data URI -->
+      <source
+        src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj=="
+        type="audio/wav"
+      />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
